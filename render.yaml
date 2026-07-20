@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: tourguide-backend
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run server
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false        # set this in the Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        sync: false        # set to your Vercel URL after first deploy
